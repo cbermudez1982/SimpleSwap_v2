@@ -1,0 +1,27 @@
+{
+  "name": "simpleswap_v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbermudez1982/SimpleSwap_v2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cbermudez1982/SimpleSwap_v2/issues"
+  },
+  "homepage": "https://github.com/cbermudez1982/SimpleSwap_v2#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
+    "@openzeppelin/contracts": "^5.3.0",
+    "chai": "^5.2.0",
+    "hardhat": "^2.25.0"
+  }
+}
