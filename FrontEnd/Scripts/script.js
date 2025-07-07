@@ -19,9 +19,11 @@ const abi = [
 const connectBtn = document.getElementById("connectBtn");
 const addLiqBtn = document.getElementById("addLiqBtn");
 const swapBtn = document.getElementById("swapBtn");
+const remLiqBtn = document.getElementById("remLiqBtn");
 const liqStatus = document.getElementById("liqStatus");
 const swapStatus = document.getElementById("swapStatus");
-const remLiqBtn = document.getElementById("remLiqBtn");
+const remLiqStatus = document.getElementById("remLiqStatus");
+
 
 connectBtn.onclick = async () => {
   await provider.send("eth_requestAccounts", []);
@@ -41,101 +43,101 @@ async function getTokenContract(tokenAddress) {
 }
 
 // Función para agregar liquidez
-addLiqBtn.onclick = async () => {
-  if (!signer) {
-    alert("Primero conecta tu wallet.");
-    return;
-  }
+// addLiqBtn.onclick = async () => {
+//   if (!signer) {
+//     alert("Primero conecta tu wallet.");
+//     return;
+//   }
 
-  liqStatus.innerText = "";
+//   liqStatus.innerText = "";
 
-  try {
-    const amountA = document.getElementById("liqAmountA").value;
-    const amountB = document.getElementById("liqAmountB").value;
+//   try {
+//     const amountA = document.getElementById("liqAmountA").value;
+//     const amountB = document.getElementById("liqAmountB").value;
 
-    if (!amountA || !amountB) {
-      alert("Ingresa cantidades válidas para ambos tokens.");
-      return;
-    }
+//     if (!amountA || !amountB) {
+//       alert("Ingresa cantidades válidas para ambos tokens.");
+//       return;
+//     }
 
-    const contract = await getContract();
-    const tokenA = await getTokenContract(TOKEN_A);
-    const tokenB = await getTokenContract(TOKEN_B);
+//     const contract = await getContract();
+//     const tokenA = await getTokenContract(TOKEN_A);
+//     const tokenB = await getTokenContract(TOKEN_B);
 
-    const amountADesired = ethers.parseUnits(amountA, 18);
-    const amountBDesired = ethers.parseUnits(amountB, 18);
-    const deadline = Math.floor(Date.now() / 1000) + 600;
+//     const amountADesired = ethers.parseUnits(amountA, 18);
+//     const amountBDesired = ethers.parseUnits(amountB, 18);
+//     const deadline = Math.floor(Date.now() / 1000) + 600;
 
-    liqStatus.innerText = "Aprobando Token A...";
-    let tx = await tokenA.approve(CONTRACT_ADDRESS, amountADesired);
-    await tx.wait();
+//     liqStatus.innerText = "Aprobando Token A...";
+//     let tx = await tokenA.approve(CONTRACT_ADDRESS, amountADesired);
+//     await tx.wait();
 
-    liqStatus.innerText = "Aprobando Token B...";
-    tx = await tokenB.approve(CONTRACT_ADDRESS, amountBDesired);
-    await tx.wait();
+//     liqStatus.innerText = "Aprobando Token B...";
+//     tx = await tokenB.approve(CONTRACT_ADDRESS, amountBDesired);
+//     await tx.wait();
 
-    liqStatus.innerText = "Agregando liquidez...";
-    tx = await contract.addLiquidity(
-      TOKEN_A,
-      TOKEN_B,
-      amountADesired,
-      amountBDesired,
-      0,
-      0,
-      await signer.getAddress(),
-      deadline
-    );
-    await tx.wait();
+//     liqStatus.innerText = "Agregando liquidez...";
+//     tx = await contract.addLiquidity(
+//       TOKEN_A,
+//       TOKEN_B,
+//       amountADesired,
+//       amountBDesired,
+//       0,
+//       0,
+//       await signer.getAddress(),
+//       deadline
+//     );
+//     await tx.wait();
 
-    liqStatus.innerText = "✅ Liquidez agregada correctamente.";
-  } catch (e) {
-    console.error(e);
-    liqStatus.innerText = "❌ Error: " + (e.reason || e.message);
-  }
-};
+//     liqStatus.innerText = "✅ Liquidez agregada correctamente.";
+//   } catch (e) {
+//     console.error(e);
+//     liqStatus.innerText = "❌ Error: " + (e.reason || e.message);
+//   }
+// };
 
 // Función para swapear tokens
-swapBtn.onclick = async () => {
-  if (!signer) {
-    alert("Primero conecta tu wallet.");
-    return;
-  }
+// swapBtn.onclick = async () => {
+//   if (!signer) {
+//     alert("Primero conecta tu wallet.");
+//     return;
+//   }
 
-  swapStatus.innerText = "";
+//   swapStatus.innerText = "";
 
-  try {
-    const amountIn = document.getElementById("swapAmountIn").value;
-    if (!amountIn) {
-      alert("Ingresa una cantidad válida para swap.");
-      return;
-    }
+//   try {
+//     const amountIn = document.getElementById("swapAmountIn").value;
+//     if (!amountIn) {
+//       alert("Ingresa una cantidad válida para swap.");
+//       return;
+//     }
 
-    const contract = await getContract();
-    const tokenA = await getTokenContract(TOKEN_A);
-    const amount = ethers.parseUnits(amountIn, 18);
-    const deadline = Math.floor(Date.now() / 1000) + 600;
-    const address = await signer.getAddress();
+//     const contract = await getContract();
+//     const tokenA = await getTokenContract(TOKEN_A);
+//     const amount = ethers.parseUnits(amountIn, 18);
+//     const deadline = Math.floor(Date.now() / 1000) + 600;
+//     const address = await signer.getAddress();
 
-    swapStatus.innerText = "Aprobando Token A...";
-    let tx = await tokenA.approve(CONTRACT_ADDRESS, amount);
-    await tx.wait();
+//     swapStatus.innerText = "Aprobando Token A...";
+//     let tx = await tokenA.approve(CONTRACT_ADDRESS, amount);
+//     await tx.wait();
 
-    swapStatus.innerText = "Realizando swap...";
-    tx = await contract.swapExactTokensForTokens(
-      amount,
-      0,
-      [TOKEN_A, TOKEN_B],
-      address,
-      deadline
-    );
-    await tx.wait();
+//     swapStatus.innerText = "Realizando swap...";
+//     tx = await contract.swapExactTokensForTokens(
+//       amount,
+//       0,
+//       [TOKEN_A, TOKEN_B],
+//       address,
+//       deadline
+//     );
+//     await tx.wait();
 
-    swapStatus.innerText = "✅ Swap realizado correctamente.";
-  } catch (e) {
-    console.error(e);
-    swapStatus.innerText = "❌ Error: " + (e.reason || e.message);
-  }
-};
+//     swapStatus.innerText = "✅ Swap realizado correctamente.";
+//   } catch (e) {
+//     console.error(e);
+//     swapStatus.innerText = "❌ Error: " + (e.reason || e.message);
+//   }
+// };
 
 
 //////////// desde aca
@@ -279,31 +281,40 @@ addLiqBtn.onclick = async () => {
 };
 
 // Remover liquidez
-addLiqBtn.onclick = async () => {
+remLiqBtn.onclick = async () => {
   if (!signer) {
     alert("Primero conecta tu wallet.");
     return;
   }
-  const liquidityAmount = document.getElementById("liqAmountRemove").value;
-  const contract = await getContract();
-    
-  const liquidity = ethers.parseUnits(liquidityAmount, 18);
-  const deadline = Math.floor(Date.now() / 1000) + 3600;
+  remLiqStatus.innerText = "";
+  try {
+    const liquidityAmount = document.getElementById("liqAmountRemove").value;
+    const contract = await getContract();
+      
+    const liquidity = ethers.parseUnits(liquidityAmount, 18);
+    const deadline = Math.floor(Date.now() / 1000) + 3600;
 
-  // Aprobar el contrato para gastar los tokens LP (que están en el contrato principal)
-  const lpToken = await getTokenContract(CONTRACT_ADDRESS); // Asumiendo que los LP tokens son del mismo contrato
-  let tx = await lpToken.approve(CONTRACT_ADDRESS, liquidity);
-  await tx.wait();
+    // Aprobar el contrato para gastar los tokens LP (que están en el contrato principal)
+    const lpToken = await getTokenContract(CONTRACT_ADDRESS); // Asumiendo que los LP tokens son del mismo contrato
+    remLiqStatus.innerText = "Aprobando token de Liquidez ..."
+    let tx = await lpToken.approve(CONTRACT_ADDRESS, liquidity);
+    await tx.wait();
 
-  tx = await contract.removeLiquidity(
-    currentTokenA,
-    currentTokenB,
-    liquidity,
-    0, // amountAMin
-    0, // amountBMin
-    await signer.getAddress(),
-    deadline
-  );
-  await tx.wait();
-  alert("Liquidez removida correctamente.");
+    remLiqStatus.innerText = "Removiendo Liquidez ..."
+    tx = await contract.removeLiquidity(
+      currentTokenA,
+      currentTokenB,
+      liquidity,
+      0, // amountAMin
+      0, // amountBMin
+      await signer.getAddress(),
+      deadline
+    );
+    await tx.wait();
+    remLiqStatus.innerText = "✅ Liquidez removida correctamente.";
+  } catch (e) {
+    // console.error(e);
+    remLiqStatus.innerText = "❌ Error: " + (e.reason || e.message);
+  }
+  
 };
