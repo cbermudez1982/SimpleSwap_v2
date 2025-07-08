@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/mnt/c/CursoETH/Modulo4/TP4/SimpleSwap/SimpleSwap_v2/contracts/SimpleSwap.sol": {
-      "lastModificationDate": 1751822357486,
-      "contentHash": "1896db8f5f743a082ad3d321334b0536",
+      "lastModificationDate": 1751991646708,
+      "contentHash": "b2256d45735fbdbcb5f9e606faea425d",
       "sourceName": "contracts/SimpleSwap.sol",
       "solcConfig": {
         "version": "0.8.28",
@@ -26,6 +26,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -68,6 +71,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -104,6 +110,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -145,6 +154,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -183,6 +195,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -219,6 +234,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -258,6 +276,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -294,6 +315,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -332,6 +356,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },
@@ -346,7 +373,7 @@
       ]
     },
     "/mnt/c/CursoETH/Modulo4/TP4/SimpleSwap/SimpleSwap_v2/contracts/ERC20Mock.sol": {
-      "lastModificationDate": 1751754533457,
+      "lastModificationDate": 1752001046763,
       "contentHash": "7d1765bbfed300245082ca880d90c611",
       "sourceName": "contracts/ERC20Mock.sol",
       "solcConfig": {
@@ -370,6 +397,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },

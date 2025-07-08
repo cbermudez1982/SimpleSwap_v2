@@ -291,9 +291,7 @@ contract SimpleSwap is ERC20, ERC20Burnable, ReentrancyGuard, Ownable {
                 if (optimalAmountA <= amountADesired ) {
                     require(optimalAmountA >= amountAMin, "SSwap: A Balance.");  
                     (amountA, amountB) = (optimalAmountA, amountBDesired);
-                } else {
-                    revert("SSwap: amount constraints.");
-                }
+                } 
             }
         }
         return (amountA, amountB);
