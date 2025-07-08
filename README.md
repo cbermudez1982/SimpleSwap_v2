@@ -74,9 +74,9 @@ Simple front end in FrontEnd Directory.
 ### Core Dependencies (automatically installed with `npm install`)
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `hardhat` | ^2.12.0 | Ethereum development environment |
-| `@openzeppelin/contracts` | ^5.0.0 | Secure smart contract libraries |
-| `@nomicfoundation/hardhat-toolbox` | ^2.0.0 | Testing and deployment utilities |
-| `@nomicfoundation/hardhat-network-helpers` | ^1.0.0 | Test helpers |
+| `hardhat` | ^2.25.0 | Ethereum development environment |
+| `@openzeppelin/contracts` | ^5.3.0 | Secure smart contract libraries |
+| `@nomicfoundation/hardhat-toolbox` | ^6.0.0 | Testing and deployment utilities |
+
 
 
