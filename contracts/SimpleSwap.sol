@@ -214,16 +214,16 @@ contract SimpleSwap is ERC20, ERC20Burnable, ReentrancyGuard, Ownable {
     * @param valueB Amount of token B provided.
     * @return min The smaller of the two ratios: valueA/reserveA or valueB/reserveB.
     */
-    function _calculateMin (address _tokenA, address _tokenB, uint256 valueA, uint256 valueB) 
-            internal view returns(uint256 min) 
-    {
-        (uint256 _reserveA, uint256 _reserveB) = _getReserves(_tokenA, _tokenB); 
-        _reserveA = _reserveA == 0 ? 1 : _reserveA;
-        _reserveB = _reserveB == 0 ? 1 : _reserveB;
-        min = (valueA / _reserveA < valueB / _reserveB) ? valueA / _reserveA : valueB / _reserveB;
+    // function _calculateMin (address _tokenA, address _tokenB, uint256 valueA, uint256 valueB) 
+    //         internal view returns(uint256 min) 
+    // {
+    //     (uint256 _reserveA, uint256 _reserveB) = _getReserves(_tokenA, _tokenB); 
+    //     _reserveA = _reserveA == 0 ? 1 : _reserveA;
+    //     _reserveB = _reserveB == 0 ? 1 : _reserveB;
+    //     min = (valueA / _reserveA < valueB / _reserveB) ? valueA / _reserveA : valueB / _reserveB;
 
-        return min;
-    }
+    //     return min;
+    // }
     /**
     * @notice Calculates the amount of liquidity tokens to mint based on deposits and total supply.
     * @dev Uses a minimum ratio to maintain price equilibrium and proportional ownership.
@@ -240,7 +240,10 @@ contract SimpleSwap is ERC20, ERC20Burnable, ReentrancyGuard, Ownable {
         if (totalSupply == 0) {
             _liquidity = sqrt(amountA * amountB);
         } else {
-            _liquidity = _calculateMin(tokenA, tokenB, amountA, amountB) * totalSupply;
+            (uint256 reserveA, uint256 reserveB) = _getReserves(tokenA, tokenB);
+            uint256 liquidityA = (amountA * totalSupply) / reserveA;
+            uint256 liquidityB = (amountB * totalSupply) / reserveB;
+            _liquidity = liquidityA < liquidityB ? liquidityA : liquidityB;
         }
         return _liquidity;
     }
@@ -291,7 +294,9 @@ contract SimpleSwap is ERC20, ERC20Burnable, ReentrancyGuard, Ownable {
                 if (optimalAmountA <= amountADesired ) {
                     require(optimalAmountA >= amountAMin, "SSwap: A Balance.");  
                     (amountA, amountB) = (optimalAmountA, amountBDesired);
-                } 
+                } else {
+                    revert("SSwap: token ratio");
+                }
             }
         }
         return (amountA, amountB);

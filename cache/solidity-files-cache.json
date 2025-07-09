@@ -306,8 +306,8 @@
       ]
     },
     "/mnt/c/CursoETH/Modulo4/TP4/SimpleSwap/SimpleSwap_v2/contracts/SimpleSwap.sol": {
-      "lastModificationDate": 1751991646708,
-      "contentHash": "b2256d45735fbdbcb5f9e606faea425d",
+      "lastModificationDate": 1752080197361,
+      "contentHash": "e82491a26b85c9bbdca3bcfb8f4c3af5",
       "sourceName": "contracts/SimpleSwap.sol",
       "solcConfig": {
         "version": "0.8.28",
