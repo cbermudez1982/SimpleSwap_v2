@@ -31,7 +31,15 @@ npx hardhat ignition deploy ignition/modules/SimpleSwap.js --network sepolia
 ```
 
 > 🔍 Contract deployed on Sepolia:
-> - Address: `0x38b6E4b23dd859E73d5708a940A4CA02ADE06Ce4`
+> - Address: [0xe30Ad4daFB933547Fe3e68ea4e3dB8416CDEEf82](https://sepolia.etherscan.io/address/0xe30Ad4daFB933547Fe3e68ea4e3dB8416CDEEf82)
+
+> 🔍 Token Contracts deployed on Sepolia:
+> - Address: [0xf367150C56b9c8C14db60914C82D1b278cfA7A6D](https://sepolia.etherscan.io/address/0xf367150C56b9c8C14db60914C82D1b278cfA7A6D)
+> - Address: [0x1Fd59a58510686a2d6029A8D27F66Fdc68360ed1](https://sepolia.etherscan.io/address/0x1Fd59a58510686a2d6029A8D27F66Fdc68360ed1)
+> - Tokens Have a public mint function for testing purposes
+
+> 🔍 Deployed simple FrontEnd for Testing:
+> - Address: [SimpleSwap](https://cbermudez1982.github.io/index.html)
 
 ## 🧪 Testing
 
