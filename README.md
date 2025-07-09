@@ -69,11 +69,6 @@ Install project dependencies:
 npm install
 ```
 
-## 📦 Useful Scripts
-
-- `deploy.js`: manual deployment script (optional)
-- `scripts/`: includes a simple frontend or interaction examples (in progress)
-
 ## 🖥️ Frontend
 
 A basic web frontend using `ethers.js` is under development to interact with the contract.
