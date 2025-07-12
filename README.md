@@ -56,6 +56,68 @@ Test coverage includes:
 - Edge cases (slippage, zero liquidity)
 - Error validations (invalid token, insufficient balance, etc.)
 
+## ✅ Test Results
+
+Executed with `npx hardhat test`:
+
+```
+  SimpleSwap Contract
+    Initialization
+      ✔ should deploy with correct name and symbol (737ms)
+    Liquidity Management
+      Adding Liquidity
+        ✔ should mint LP tokens when adding initial liquidity (228ms)
+        ✔ should adjust tokenA amount when optimalAmountB exceeds desired amount
+        ✔ should handle minimum possible liquidity amounts
+        ✔ should revert when minimum amounts aren't met (723ms)
+        ✔ should revert when using zero address (275ms)
+      Removing Liquidity
+        ✔ should return both tokens when removing liquidity
+        ✔ should revert when minimum output amounts aren't met
+    Token Swaps
+      ✔ should execute token swap with correct output amount
+      ✔ should reject swap when minimum output isn't met
+      ✔ should reject swap with invalid token path
+      ✔ should reject swap with identical tokens
+      ✔ should revert swaps after deadline
+    Price Calculations
+      ✔ should return correct price for token pair
+      ✔ should calculate expected output amount correctly
+      ✔ should revert when calculating output with zero input
+      ✔ should revert when querying price with no liquidity (51ms)
+    syncReserve
+      ✔ should update reserves correctly (47ms)
+    Edge Cases
+      ✔ should handle all sqrt calculation branches in addLiquidity
+      ✔ should handle _calculateMin edge cases (zero reserves) (38ms)
+      ✔ should revert when no amounts can be adjusted in _addLiquidity
+      ✔ should prevent reentrancy during swaps
+      ✔ should demonstrate front-running vulnerability (69ms)
+      ✔ should revert with correct message on identical tokens
+      ✔ should calculate sqrt(1 wei) correctly
+      ✔ should allow swaps with zero minimum output (68ms)
+      ✔ should handle 1000:1 token ratio
+      ✔ should handle near-zero reserveA when adding liquidity
+      ✔ should handle any valid swap amount (fuzz) (53ms)
+
+  29 passing (10s)
+```
+
+## 📈 Coverage Report
+
+Generated with `npx hardhat coverage`:
+
+```
+-----------------|----------|----------|----------|----------|----------------|
+File             |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+-----------------|----------|----------|----------|----------|----------------|
+ contracts/      |    98.28 |    79.03 |      100 |    98.91 |                |
+  ERC20Mock.sol  |      100 |      100 |      100 |      100 |                |
+  SimpleSwap.sol |    98.25 |    79.03 |      100 |     98.9 |            298 |
+-----------------|----------|----------|----------|----------|----------------|
+All files        |    98.28 |    79.03 |      100 |    98.91 |                |
+
+
 ## 🔗 Dependencies
 
 - Solidity `^0.8.27`
