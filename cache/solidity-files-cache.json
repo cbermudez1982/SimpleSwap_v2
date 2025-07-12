@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/mnt/c/CursoETH/Modulo4/TP4/SimpleSwap/SimpleSwap_v2/contracts/ERC20Mock.sol": {
-      "lastModificationDate": 1752001046763,
+      "lastModificationDate": 1752339008773,
       "contentHash": "7d1765bbfed300245082ca880d90c611",
       "sourceName": "contracts/ERC20Mock.sol",
       "solcConfig": {
@@ -26,9 +26,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -67,9 +64,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -111,9 +105,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -150,9 +141,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -189,9 +177,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -230,9 +215,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -271,9 +253,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -313,9 +292,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -354,9 +330,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -399,9 +372,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },

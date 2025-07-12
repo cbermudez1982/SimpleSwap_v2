@@ -53,7 +53,7 @@ describe("SimpleSwap Contract", function () {
           0,
           0,
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         );
         expect(await simpleSwap.balanceOf(user1.address)).to.equal(ethers.parseEther("10"));
       });
@@ -73,7 +73,7 @@ describe("SimpleSwap Contract", function () {
           0,
           0,
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         );
 
         const receipt = await tx.wait();
@@ -101,7 +101,7 @@ describe("SimpleSwap Contract", function () {
           0,
           0,
           user2.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         );
         expect(await simpleSwap.balanceOf(user2.address)).to.equal(1);
       });
@@ -122,7 +122,7 @@ describe("SimpleSwap Contract", function () {
             0,
             ethers.parseEther("8"),
             user1.address,
-            getFutureTimestamp()
+            getFutureTimestamp(600)
           )
         ).to.be.revertedWith("SSwap: B Balance.");
       });
@@ -137,7 +137,7 @@ describe("SimpleSwap Contract", function () {
             0,
             0,
             ethers.ZeroAddress, // Invalid address
-            getFutureTimestamp()
+            getFutureTimestamp(600)
           )
         ).to.be.reverted;
       });
@@ -157,7 +157,7 @@ describe("SimpleSwap Contract", function () {
           0,
           0,
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         );
       });
 
@@ -178,7 +178,7 @@ describe("SimpleSwap Contract", function () {
           0,
           0,
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         );
 
         const [finalA, finalB] = await Promise.all([
@@ -208,7 +208,7 @@ describe("SimpleSwap Contract", function () {
               ethers.parseEther("100"),
               0,
               user1.address,
-              getFutureTimestamp()
+              getFutureTimestamp(600)
             )
           ).to.be.revertedWith("SSwap: Balance.");
         });
@@ -230,7 +230,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         user1.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
     });
 
@@ -243,7 +243,7 @@ describe("SimpleSwap Contract", function () {
         0,
         [tokenA.target, tokenB.target],
         user2.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
 
       const received = (await tokenB.balanceOf(user2.address)) - initialBalance;
@@ -259,7 +259,7 @@ describe("SimpleSwap Contract", function () {
           ethers.parseEther("10"),
           [tokenA.target, tokenB.target],
           user2.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.be.revertedWith("SSwap: Transfer cancelled.");
     });
@@ -271,7 +271,7 @@ describe("SimpleSwap Contract", function () {
           0,
           [tokenA.target],
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.be.revertedWith("SSwap: No tokens selected.");
     });
@@ -283,7 +283,7 @@ describe("SimpleSwap Contract", function () {
           0,
           [tokenA.target, tokenA.target],
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.be.revertedWith("SSwap: Same tokens.");
     });
@@ -319,7 +319,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         user1.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
     });
 
@@ -363,7 +363,7 @@ describe("SimpleSwap Contract", function () {
             0,
             0,
             owner.address,
-            getFutureTimestamp()
+            getFutureTimestamp(600)
           );
         }
       } catch (e) {
@@ -385,7 +385,7 @@ describe("SimpleSwap Contract", function () {
           0,
           [tokenA.target, tokenB.target],
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.be.revertedWith("SSwap: Not Enough Liquidity");
 
@@ -400,7 +400,7 @@ describe("SimpleSwap Contract", function () {
         0,
         [tokenA.target, tokenB.target],
         user1.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
       const received = (await tokenB.balanceOf(user1.address)) - beforeBalance;
       expect(received).to.be.gt(0);
@@ -423,7 +423,7 @@ describe("SimpleSwap Contract", function () {
           0,
           0,
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         );
       }
     });
@@ -445,7 +445,7 @@ describe("SimpleSwap Contract", function () {
           0,
           0,
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.be.revertedWith("SSwap: Not Enough Liquidity");
     });
@@ -466,7 +466,7 @@ describe("SimpleSwap Contract", function () {
           ethers.parseEther("10"),
           ethers.parseEther("10"),
           user1.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.be.revertedWith("SSwap: A Balance.");
     });
@@ -483,7 +483,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         owner.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
 
       // Test proper approvals
@@ -498,7 +498,7 @@ describe("SimpleSwap Contract", function () {
         0,
         [tokenA.target, tokenB.target],
         owner.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
 
       // Verify only expected amount transferred
@@ -520,7 +520,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         owner.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
 
       // User approvals
@@ -534,7 +534,7 @@ describe("SimpleSwap Contract", function () {
         0,
         [tokenA.target, tokenB.target],
         user1.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
       const victimRate = ((await tokenB.balanceOf(user1.address)) - victimBefore) / ethers.parseEther("50");
 
@@ -546,7 +546,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         owner.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
       
       // Re-add liquidity
@@ -558,7 +558,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         owner.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
 
       // Attacker action
@@ -568,7 +568,7 @@ describe("SimpleSwap Contract", function () {
         0,
         [tokenA.target, tokenB.target],
         user2.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
       const attackerRate = ((await tokenB.balanceOf(user2.address)) - attackerBefore) / ethers.parseEther("10");
 
@@ -578,7 +578,7 @@ describe("SimpleSwap Contract", function () {
         0,
         [tokenA.target, tokenB.target],
         user1.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
       const victimRateAfter = ((await tokenB.balanceOf(user1.address)) - victimBefore - (victimRate * ethers.parseEther("50"))) / ethers.parseEther("50");
 
@@ -592,7 +592,7 @@ describe("SimpleSwap Contract", function () {
           0,
           [tokenA.target, tokenA.target], // Same token
           owner.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.be.revertedWith("SSwap: Same tokens.");
     });
@@ -617,7 +617,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         owner.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
       expect(await simpleSwap.balanceOf(owner.address)).to.equal(1);
     });
@@ -634,7 +634,7 @@ describe("SimpleSwap Contract", function () {
         0,
         0,
         owner.address,
-        getFutureTimestamp()
+        getFutureTimestamp(600)
       );
 
       await tokenA.approve(simpleSwap.target, ethers.parseEther("1"));
@@ -644,7 +644,7 @@ describe("SimpleSwap Contract", function () {
           0, // minAmountOut = 0
           [tokenA.target, tokenB.target],
           owner.address,
-          getFutureTimestamp()
+          getFutureTimestamp(600)
         )
       ).to.not.reverted;
     });
@@ -768,7 +768,6 @@ describe("SimpleSwap Contract", function () {
         expect(await tokenB.balanceOf(user1.address)).to.be.gt(before);
       }
     }).timeout(10000);
-
 
   });
 });
